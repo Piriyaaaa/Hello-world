@@ -3,7 +3,7 @@ import java.net.*;
 
 public class SimoleEchoServer {
     public static void main(String[] args) {
-        System.out.println("Creating a hard Echo Server in Java");
+        System.out.println("Creating a simple Echo Server in Java");
 
         int port = 12345;
         try (ServerSocket serverSocket = new ServerSocket(port)) {
