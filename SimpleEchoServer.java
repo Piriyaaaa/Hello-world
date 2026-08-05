@@ -1,53 +1,34 @@
-package Hard;
+import java.io.*;
+import java.net.*;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+public class SimoleEchoServer {
+    public static void main(String[] args) {
+        System.out.println("Creating a hard Echo Server in Java");
 
-public class SimpleEchoServer {
-	public static void main(String[] args) {
-		System.out.println("Creating a simple echo server in java");
-		
-		int port = 12345;
-		try(ServerSocket serverSocket = new ServerSocket(port)){
-			System.out.println("Echo system linstening on port" + port);
-			
-			while (true);
-			Socket client = serverSocket.accept();
-			System.out.println("Client connected: " + client.getRemoteSocketAddress());
-			
-			Thread t = new Thread(() -> handleClient(client));
-			t.start();
-			
-		}
-			
-		} 
-	   catch (IOException e) {
-		   System.out.println("Server error:" + e.getMessage());
-		
-	   }
+        int port = 12345;
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Echo server listening on port " + port);
 
-}
+            while (true) {
+                Socket client = serverSocket.accept();
+                new Thread(() -> handleClient(client)).start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private static void handleClient(Socket client) {
+        try (Socket socket = client;
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
-private static <BufferedReader> void handleClient(Socket client) {
-	try(
-			BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream())));
-			PrinterWriter out = new PrinterWriter(client.getOutputStream(), true)){
-				
-				String line;
-				while((line = in.readline())!= null) {
-					out.println(line);
-				}
-			}
-			catch (IOException ignored) {
-			
-			}
-				finally {
-					
-					try {client.close();} 
-					catch (IOException ignored) {}
-				}
-			}
-
+            String line;
+            while ((line = in.readLine()) != null) {
+                out.println(line); // echo back
+            }
+        } catch (IOException e) {
+            // Client disconnected or network error
+        }
+    }
 }
