@@ -11,13 +11,10 @@ public class Order {
 
 	public static void main(String[] args) {
 		
-		BidDecimal Price = 0;
-		BigDecimal Quantity = 0;
+		BidDecimal Price;
+		BigDecimal Quantity;
 		
-		System.out.println(Price);
-		System.out.println(Quantity);
-					
-				
+		
 			}
 	public class orderbook{
 		
