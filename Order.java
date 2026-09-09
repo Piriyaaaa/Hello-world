@@ -11,8 +11,8 @@ public class Order {
 
 	public static void main(String[] args) {
 		
-		double Price = 0;
-		int Quantity = 0;
+		BidDecimal Price = 0;
+		BigDecimal Quantity = 0;
 		
 		System.out.println(Price);
 		System.out.println(Quantity);
