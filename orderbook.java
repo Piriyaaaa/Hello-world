@@ -6,12 +6,18 @@ import org.json.JSONObject;
 
 
 public class orderbook {
+	
+	orderbook orderbook = new orderbook();
 	String price = "message";
 	private BigDecimal bids;
 	private BigDecimal asks;
 	
-	ArrayList <BigDecimal> bid1 = new ArrayList<>();
-	ArrayList <BigDecimal> ask1 = new ArrayList<>();
+	//generics
+	ArrayList <BigDecimal> bid1 = new ArrayList<BigDecimal>();
+	ArrayList <BigDecimal> ask1 = new ArrayList<BigDecimal>();
+	
+	bid1.add(price);
+	ask1.add(price);
 	
 	
 	
@@ -19,5 +25,6 @@ public class orderbook {
 	
 	
 	
+	}	
 
-}
+
