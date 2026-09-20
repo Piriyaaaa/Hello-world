@@ -16,8 +16,13 @@ public class orderbook {
 		ArrayList<BigDecimal> bid1 = new ArrayList<>();
 		ArrayList<BigDecimal> ask1 = new ArrayList<>();
 
-		System.out.println(bid1.get(0));
-		System.out.println(ask1.get(0));
+		bid1.add(new BigDecimal("80408.9"));
+		ask1.add(new BigDecimal("80409"));
+		
+		
+		System.out.println(bid1.getLast());
+		System.out.println(ask1.getLast());
+		
 
 	}
 
